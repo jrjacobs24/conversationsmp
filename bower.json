@@ -3,6 +3,6 @@
 	"description": "The Conversations Made Possible WordPress Theme",
 	"version": "1.0.0",
 	"dependencies": {
-		"bootstrap-sass-official": "~3.3.3"
+		"bootstrap-sass-official": "*"
 	}
 }
