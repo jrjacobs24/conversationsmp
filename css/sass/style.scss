@@ -7,27 +7,36 @@ Author: Jonathon Jacobs
 Author URI: http://jjthegreat.com
 */
 
-a { color: blue; &:hover { color: green; } }
+// Imports =================================================================
+
+// Import Bootstrap styles
+@import 'bootstrap';
+
+// Import Bootswatch styles
+@import 'bootswatch';
+
+
+// Base Properties =================================================================
+
+html,
+body {
+  height: 100%;
+  background-color: $brand-primary;
+}
 
 body {
-  color: #fff;
-  text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
-/* Extra markup and styles for table-esque vertical and horizontal centering */
-.site-wrapper {
-  display: table;
+// Reusable Properties (For Extending) =================================================================
+
+.full-width {
   width: 100%;
-  height: 100%; /* For at least Firefox */
-  min-height: 100%;
-  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
-.site-wrapper-inner {
-  display: table-cell;
-  vertical-align: top;
-}
+
+
+// Structural Properties =================================================================
+
 .cover-container {
   margin-right: auto;
   margin-left: auto;
@@ -35,7 +44,67 @@ body {
 
 /* Padding for spacing */
 .inner {
-  padding: 30px;
+  padding: $padding-large-horizontal;
+}
+
+.padding-large {
+  padding-top: $padding-large-vertical;
+  padding-bottom: $padding-large-horizontal;
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  @extend .full-width;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  @include box-shadow (inset 0 0 100px rgba(0,0,0,.5));
+}
+
+.site-wrapper-inner {
+  vertical-align: top;
+}
+
+
+// Alignments =================================================================
+
+.alignleft,
+.alignright {
+  display: inline;
+}
+
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+}
+
+.aligncenter {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+// Typography =================================================================
+
+.big-headline {
+  @extend .text-uppercase;
+  font: {
+    family: $font-family-sans-serif;
+    size: $font-size-h1 + 20;
+    weight: 700;
+    }
+}
+
+
+// Images =================================================================
+
+#logo-container {
+  @extend .full-width;
+  max-width: 450px;
 }
 
 /*
@@ -43,19 +112,12 @@ body {
  */
 
 @media (min-width: 768px) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
+
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
   }
+
   /* Handle the widths */
   .masthead,
   .mastfoot,
@@ -68,12 +130,6 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 700px;
+    width: 1040px;
   }
 }
-
-// Import Bootstrap styles
-@import 'bootstrap';
-
-// Import Bootswatch styles
-@import 'bootswatch';

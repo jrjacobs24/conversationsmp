@@ -32,7 +32,15 @@ function optionsframework_option_name() {
 function optionsframework_options() {
 
 	// If using image radio buttons, define a directory path
-	$imagepath =  get_template_directory_uri() . '/static/images/';
+	$imagepath =  get_template_directory_uri() . '/_inc/images/';
+
+	// Background Defaults
+	$background_defaults = array(
+		'color' => '',
+		'image' => '',
+		'repeat' => 'repeat',
+		'position' => 'top center',
+		'attachment'=>'scroll' );
 
 
 	// Pull all the categories into an array
@@ -60,7 +68,7 @@ function optionsframework_options() {
 	$options = array();
 
 	$options[] = array(
-		'name' => __('Header Meta', 'convomp'),
+		'name' => __('Meta Data', 'convomp'),
 		'type' => 'heading');
 
 // Standard Meta
@@ -89,7 +97,21 @@ function optionsframework_options() {
 		'std' => 'width=device-width, initial-scale=1.0',
 		'type' => 'text');
 
-// Icons
+	/**
+	 * Branding Options
+	 */
+	$options[] = array(
+		'name' => __('Barnding Options', 'convomp'),
+		'type' => 'heading');
+
+	// Site Logo
+	$options['logo_uploader'] = array(
+		"name" => __('Upload Logo Image', 'convomp'),
+		"desc" => __('', 'convomp'),
+		"id" => "logo_image",
+		"type" => "upload" );
+
+	// Icons
 	$options[] = array(
 		'name' => __('Site Favicon', 'convomp'),
 		'desc' => __('', 'convomp'),
@@ -101,7 +123,22 @@ function optionsframework_options() {
 		'id' => 'head_apple_touch_icon',
 		'type' => 'upload');
 
-// App: Windows 8
+
+	// Style properties
+	$options[] = array(
+		'name' =>  __('Background Styles', 'options_check'),
+		'desc' => __('Change the background color or image.', 'options_check'),
+		'id' => 'background_styles',
+		'std' => $background_defaults,
+		'type' => 'background' );
+
+	/**
+	 * App Data
+	 */
+	$options[] = array(
+		'name' => __('App Data', 'convomp'),
+		'type' => 'heading');
+	// App: Windows 8
 	$options[] = array(
 		'name' => __('App: Windows 8', 'convomp'),
 		'desc' => __('Application Name', 'convomp'),
@@ -181,6 +218,7 @@ function optionsframework_options() {
 
 	return $options;
 
+
 	/* FIELD OPTIONS */
 	/*
 	// Test data
@@ -207,13 +245,7 @@ function optionsframework_options() {
 		'five' => '1'
 	);
 
-	// Background Defaults
-	$background_defaults = array(
-		'color' => '',
-		'image' => '',
-		'repeat' => 'repeat',
-		'position' => 'top center',
-		'attachment'=>'scroll' );
+	
 
 	// Typography Defaults
 	$typography_defaults = array(

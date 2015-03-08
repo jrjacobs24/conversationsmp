@@ -28,16 +28,16 @@ add_action( 'after_setup_theme', 'convomp_setup' );
 	* @return void
 	*/
 // Load jQuery
-if ( !is_admin() ) {
-   wp_deregister_script('jquery');
-   wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"), false);
-   wp_enqueue_script('jquery');
-}
+// if ( !is_admin() ) {
+//    wp_deregister_script('jquery');
+//    wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"), false);
+//    wp_enqueue_script('jquery');
+// }
 
     
 function convomp_enqueue_scripts() {
     wp_enqueue_style( 'convomp-styles', get_template_directory_uri() . '/style.css' ); //our stylesheet
-    wp_enqueue_script( 'jquery' );
+    // wp_enqueue_script( 'jquery' );
     // wp_enqueue_script( 'default-scripts', get_template_directory_uri() . '/static/js/footer.js', array(), '1.0', true );
     if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 }
@@ -121,6 +121,25 @@ function posted_on() {
 		esc_attr( get_the_author() )
 	);
 }
+
+// Add background styles from Theme Options page
+// if ( !function_exists( 'convomp_background_styles' ) ) {
+function convomp_background_styles() {
+
+	if ( of_get_option( 'background_styles' )['image'] ) {
+
+		printf( __("<style>body { background: url(%s) no-repeat; background-size: cover; }</style>", 'convomp'), 
+			of_get_option( 'background_styles' )['image']);
+
+	} else {
+
+		return false;
+
+	}
+
+}
+add_action( 'wp_head', 'convomp_background_styles' );
+//}
 
 
 /* Uncomment to add custom image sizes

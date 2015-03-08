@@ -77,13 +77,6 @@
 		if (true == of_get_option('head_apple_touch_icon'))
 			echo '<link rel="apple-touch-icon" href="' . of_get_option("head_apple_touch_icon") . '">';
 	?>
-		<!-- CSS is loaded via the enqueue function - change as necessary 
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/static/css/style.css" />
-		-->
-
-		<!-- This is an un-minified, complete version of Modernizr.
-			 Before you move to production, you should generate a custom build that only has the detects you need. -->
-		<script src="<?php echo get_template_directory_uri(); ?>/static/js/modernizr.js"></script>
 
 	<!-- Application-specific meta tags -->
 	<?php

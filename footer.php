@@ -5,13 +5,15 @@
  * @since Conversations Made Possible Template 1.0
  */
 ?>
-		<footer id="footer" class="mastfoot source-org vcard copyright" role="contentinfo">
-			<small>&copy;<?php echo date("Y"); echo " "; bloginfo('name'); ?></small>
-		</footer>
+  		<footer id="footer" class="mastfoot source-org vcard copyright text-center" role="contentinfo">
+  			<small>&copy;<?php echo date("Y"); echo " "; bloginfo('name'); ?></small>
+  		</footer>
 
-	</div> <!-- end site-wrapper-inner -->
+    </div> <!-- end .cover-container -->
 
-</div> <!-- end site-wrapper -->
+	</div> <!-- end .site-wrapper-inner -->
+
+</div> <!-- end .site-wrapper -->
 
 	<?php wp_footer(); ?>
 

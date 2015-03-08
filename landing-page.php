@@ -12,15 +12,31 @@ get_header(); ?>
 
 		<div class="cover-container">
 
+			<div class="masthead clearfix">
+            <div class="inner">
+              <div class="masthead-brand">
+              	<?php if ( of_get_option( 'logo_image' ) ): ?>
+
+              		<div id="logo-container" class="aligncenter">
+              			<img class="logo img-responsive aligncenter" alt="<?php echo get_bloginfo( 'name' ); ?>" src="<?php echo of_get_option( 'logo_image' ); ?>">
+              		</div>
+              	
+              	<?php else: ?>
+
+              		<h1 class="text-center"><?php echo get_bloginfo( 'name' ); ?></h1>
+
+              	<?php endif; ?>
+              </div>
+            </div>
+          </div>
+
 			<div class="inner cover">
 
 				<?php the_content(); ?>
 
 			</div>
 
-		</div>		
-
-		<?php edit_post_link(__('Edit this entry','convomp'), '<p>', '</p>'); ?>
+			<?php edit_post_link(__('Edit','convomp'), '<p>', '</p>'); ?>		
 
 	<?php endwhile; endif; ?>
 
